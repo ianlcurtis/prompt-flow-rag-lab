@@ -1,9 +1,13 @@
 # LAB: Prompt flow Multi-round Chat on Your Data
-Prompt flow is a development tool designed to streamline the entire development cycle of AI applications powered by Large Language Models (LLMs). Prompt flow provides a comprehensive solution that simplifies the process of prototyping, experimenting, iterating, and deploying your AI applications.
+Prompt flow, part of AI Studio, is a development tool designed to streamline the entire development cycle of AI applications powered by Large Language Models (LLMs). Prompt flow provides a comprehensive solution that simplifies the process of prototyping, experimenting, iterating, and deploying your AI applications.
 
-In AI Studio there are a number of example flows that you can clone to experiment with, including the *Multi-Round Q&A on Your Data* flow. This flow creates a chatbot that uses an LLM and data from your own indexed files to ground multi-round question and answering capabilities in enterprise chat scenarios.
+In AI Studio there are a number of example flows that you can clone to experiment with, including the *Multi-Round Q&A on Your Data* flow. This flow creates a chatbot that uses an LLM and data from your own indexed files to ground multi-round question and answering capabilities in enterprise chat scenarios. 
 
-**This lab walks you through the process of building up that RAG flow from scratch.**
+This is a *RAG* process like the one pictured below where prompt flow is the *orchestrator* component.
+
+![alt text](images/RAG.png)
+
+**As a learning process, this lab walks you through the process of building up that RAG flow from scratch.**
 
 > Creating these services may incur Azure usage costs.
 
@@ -20,7 +24,7 @@ In AI Studio there are a number of example flows that you can clone to experimen
 
 ## Open AI Studio
 1. In AI Studio open your project, and select *Prompt flow* from the *Tools* menu on the left.
-2. On the *Flows* panel, click the *Create* button.
+2. On the *Flows* page, click the *Create* button.
 3. In the *Create new flow* window that opens, click the *Create* button for the *Chat flow* type. This will open the flow in Prompt flow.
 
 ![alt text](images/pf-ui.png)
@@ -33,7 +37,9 @@ The Chat flow you have cloned is a template for creating a Q&A flow. At the top 
 And it returns one output:
 1. `chat_output` - the response from the flow which is returned to the caller. Note that the value for this is set to be the output of the `chat` node.
 
-*Nodes* are the building blocks of Prompt flow, they appear as panels below the *Inputs* and *Outputs* section. You can see that there is a default node called *chat* which is of type `LLM`. The purpose of an LLM node is to define a prompt, submit it to an LLM, and receive a response. Look at the *Inputs* section at the bottom of the node panel. You can see that it accepts the two parameters passed into the overall flow. The node declares a simple system message, loops through and appends the `chat_history`, and adds the input question `chat_input`. Prompt flow uses a templating language called *jinja2* which lets you insert variables into your nodes at run-time.
+*Nodes* are the building blocks of Prompt flow, they appear as panels below the *Inputs* and *Outputs* section. You can see that there is a default node called *chat* which is of type `LLM`. The purpose of an LLM node is to define a prompt, submit it to an LLM, and receive a response. Look at the *Inputs* section at the bottom of the node panel. You can see that it accepts the two parameters passed into the overall flow. The node declares a simple system message, loops through and appends the `chat_history`, and adds the input question `chat_input`. 
+
+> Prompt flow uses a templating language called *jinja2* which lets you insert variables into your nodes at run-time.
 
 ## Run the flow
 As it is, the flow will run, providing a chat with the configured LLM model.
@@ -41,7 +47,7 @@ As it is, the flow will run, providing a chat with the configured LLM model.
 > Running compute  may incur Azure usage costs.
 2. At the top of the default LLM node:
     - Select your LLM connection, configured earlier. 
-    - Leave the Api option as `chat`, 
+    - Leave the Api option as *chat*, 
     - select the model deployment configured as a connection earlier from the deployment_name list, 
     - set max_tokens to 300, 
     - and response_format to *text*.
