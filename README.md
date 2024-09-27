@@ -245,7 +245,7 @@ Finally, lets run through our RAG!
 ## Stretch Goal - Create prompt variants
 A variant refers to a specific version of a tool node that has distinct settings. Currently, variants are supported only in the LLM tool. For example, in the LLM tool, a new variant can represent either a different prompt content or different connection settings.
 
-Prompt flow allows you to create variants of a prompt and compare their performance. This is a powerful tool to help you to quickly get to a high performing prompt. You'll see the prompt variant toolbar buttons at the top of `Prompt` and `LLM` node types (see below).
+Prompt flow allows you to create variants of a prompt and compare their performance. This is a powerful tool to help you quickly get to a high performing prompt. You'll see the prompt variant toolbar buttons at the top of `Prompt` and `LLM` node types (see below).
 
 ![alt text](images/prompt-variants-toolbar.png)
 ![alt text](images/llm-variants-toolbar.png)
@@ -260,26 +260,26 @@ If you want to use your own grounding data in your *AI Search* index you will ne
 
 Prompt flow takes a few seconds to generate the variants. Behind the scenes, Prompt flow is using your configured LLM to create these variants.
 
-3. Click the `Show variants` button and scroll down to see the new variants created. Note that the wording in each is slightly different. 
-4. Now let's run the flow. Click the `Evaluate` button in the toolbar at the top of the page and select `Custom evaluation`. The *Batch run & Evaluate* window will open.
-5. In the Basic settings page:
+2. Click the `Show variants` button and scroll down to see the new variants created. Note that the wording in each is slightly different. 
+3. Now let's run the flow. Click the `Evaluate` button in the toolbar at the top of the page and select `Custom evaluation`. The *Batch run & Evaluate* window will open.
+4. In the Basic settings page:
     - Give the run a *Display name* and *Description*, or leave the defaults. 
     - In the *Variants* section make sure that *Select a node to run variants* is selected, and the selected node name is *Prompt_variants*. 
     - Click *Next*.
-6. In the Batch run settings page:
+5. In the Batch run settings page:
     - Click the `+ Add new data` link, then select and upload the *data/data.csv* from this repository (or your own test data, depending on your grounding data). 
     - Review the preview of the top 5 rows. 
     - Click *Next*.
-7. On the Select evaluation page:
+6. On the Select evaluation page:
     - Select the *QnA Groundedness Evaluation* as the evaluation to run.
     - Click *Next*.
-8. On the *Configure evaluation* page:
+7. On the *Configure evaluation* page:
     - Select *${data.answer}* as the context Data source.
     - Select an LLM connection.
 
 ![alt text](images/configure-evaluation.png)
 
-9. Finally review and submit the job. The evaluate window will close.
+8. Finally review and submit the job. The evaluate window will close.
 
 Evaluation of the batch data across the 3 variants has begun. To see the progress and results click the `View batch runs` button on the toolbar at the top of the page. You should see 3 rows, representing your 3 variants. Initially they will be in a processing state, but if you refresh you will see them reach a *Completed* state. Now you can click on a row to drill down into it. Once it opens click the `Details` button on the far right of the top toolbar.
 
