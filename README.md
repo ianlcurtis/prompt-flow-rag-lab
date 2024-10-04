@@ -242,8 +242,8 @@ user:
 Finally, lets run through our RAG!
 1. Run the flow and enter a question that could be answered by your grounding data in AI Search. You should get a response with citations.
 
-## Stretch Goal - Create prompt variants
-A variant refers to a specific version of a tool node that has distinct settings. Currently, variants are supported only in the LLM tool. For example, in the LLM tool, a new variant can represent either a different prompt content or different connection settings.
+## Create prompt variants
+A variant refers to a specific version of a tool node that has distinct settings. Currently, variants are supported only in the *LLM* tool. For example, in the LLM tool, a new variant can represent either a different prompt content or different connection settings.
 
 Prompt flow allows you to create variants of a prompt and compare their performance. This is a powerful tool to help you quickly get to a high performing prompt. You'll see the prompt variant toolbar buttons at the top of `Prompt` and `LLM` node types (see below).
 
@@ -252,36 +252,17 @@ Prompt flow allows you to create variants of a prompt and compare their performa
 
 > You can toggle viewing the configured variants by clicking the *show/hide variants* button.
 
-First Let's create 3 variants of our original prompt and test their comparitive effectiveness by editing the *Prompt_variants* `Prompt` type node.
+First let's create 2 additional variants of our original prompt and test their comparitive effectiveness by editing the *Prompt_variants* `Prompt` type node.
 
-If you want to use your own grounding data in your *AI Search* index you will need to generate some test data. You can use the format of the *data/data.csv* file as a guide. Alternatively, you can index the *data/surface-pro-4-user-guide-EN.pdf* file in your AI Search and use the *data/data.csv* as-is. See this [learn article](https://learn.microsoft.com/en-us/azure/ai-services/openai/use-your-data-quickstart) for simple guidance on indexing.
+1. Scroll to the *Prompt_variants* node and click the `Generate variants` button in the toolbar. This will open the *Generate prompt variants in bulk* window. 
+2. For the *Max number of new variants to generate* value enter "2" and select a *Connection* and *Deployment name* if not already populated. Click `Submit`. Prompt flow takes a few seconds to generate the variants. Behind the scenes, Prompt flow is using your configured LLM to create these variants.
+3. Click the `Show variants` button and scroll down to see the new variants created. Note that the wording in each is slightly different.
 
-1. Scroll to the *Prompt_variants* node and click the `Generate variants` button in the toolbar. This will open the *Generate prompt variants in bulk* window. For the *Max number of new variants to generate* value enter "2" and select a *Connection* and *Deployment name* if not already populated. Click `Submit`.
+Now we'll create an extra variant for our *chat_with_context* `LLM` type node.
 
-Prompt flow takes a few seconds to generate the variants. Behind the scenes, Prompt flow is using your configured LLM to create these variants.
+4. Scroll to the *chat_with_context* node and click the `Show variants` button in the toolbar, then click the `Clone` button. This will create a copy of *variant_0* underneath called *variant_1*. 
+5. Scroll to the new *variant_1* panel and edit the *Connection* properties to use a different model. For example, if *variant_0* uses *gpt-4o*, set *variant_1* to use *gpt-35-turbo*.
+3. We will evaluate our flow, with it's prompt variants, next. For now save the flow.
 
-2. Click the `Show variants` button and scroll down to see the new variants created. Note that the wording in each is slightly different. 
-3. Now let's run the flow. Click the `Evaluate` button in the toolbar at the top of the page and select `Custom evaluation`. The *Batch run & Evaluate* window will open.
-4. In the Basic settings page:
-    - Give the run a *Display name* and *Description*, or leave the defaults. 
-    - In the *Variants* section make sure that *Select a node to run variants* is selected, and the selected node name is *Prompt_variants*. 
-    - Click *Next*.
-5. In the Batch run settings page:
-    - Click the `+ Add new data` link, then select and upload the *data/data.csv* from this repository (or your own test data, depending on your grounding data). 
-    - Review the preview of the top 5 rows. 
-    - Click *Next*.
-6. On the Select evaluation page:
-    - Select the *QnA Groundedness Evaluation* as the evaluation to run.
-    - Click *Next*.
-7. On the *Configure evaluation* page:
-    - Select *${data.answer}* as the context Data source.
-    - Select an LLM connection.
 
-![alt text](images/configure-evaluation.png)
-
-8. Finally review and submit the job. The evaluate window will close.
-
-Evaluation of the batch data across the 3 variants has begun. To see the progress and results click the `View batch runs` button on the toolbar at the top of the page. You should see 3 rows, representing your 3 variants. Initially they will be in a processing state, but if you refresh you will see them reach a *Completed* state. Now you can click on a row to drill down into it. Once it opens click the `Details` button on the far right of the top toolbar.
-
-### Next...
-This has let us compare the comparitive performance of 3 prompts at performing a task. Now why not try comparing 2 different LLMs by doing much the same process with the *chat_with_context* `LLM` type node. Make sure that you have several different LLM models deployed and try cloning the variant_0 and using different models with each variant.
+> For evaluations, if you want to use your own grounding data in your *AI Search* index you will need to generate some test data. You can use the format of the *data/data.csv* file as a guide. Alternatively, you can index the *data/surface-pro-4-user-guide-EN.pdf* file in your AI Search and use the *data/data.csv* as-is. See this [learn article](https://learn.microsoft.com/en-us/azure/ai-services/openai/use-your-data-quickstart) for simple guidance on indexing.
