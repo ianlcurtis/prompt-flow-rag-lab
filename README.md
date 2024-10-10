@@ -59,11 +59,11 @@ As it is, the flow will run, providing a chat with the configured LLM model.
 
 After a moment you should see a response from the LLM in the chat panel. Review the *Outputs* section at the bottom of the LLM node, look at the *Input*, *Output*, *Trace*, and *Logs* tabs. This gives you information about what was passed to this node as input, what processing happened, and what the node created as output - this is very useful for debugging purposes!
 
-## Create a prompt variant with hard-coded data
-We are going to create 2 new nodes. The first, a *prompt variant* node will define a prompt with some hard coded context. The second, an *LLM* node will pass the prompt variant to the LLM and get a response.
+## Create a prompt node with hard-coded data
+We are going to create 2 new nodes. The first, a `prompt` node will define a prompt with some hard coded context. The second, an `LLM` node will pass the prompt variant to the LLM and get a response.
 
-### Create a prompt variant
-A *Prompt* node lets you define a prompt, and create variants of that prompt with the intention of comparing their performance. We are going to create a prompt with some hard coded context data. Later we will replace this context with data from our AI Search service (aka the RAG pattern).
+### Create a prompt node
+A `Prompt` node lets you define a prompt, and create variants of that prompt with the intention of comparing their performance. We are going to create a prompt with some hard coded context data. Later we will replace this context with data from our AI Search service (aka the RAG pattern).
 1. Click the `Prompt` button in the toolbar, a new empty Prompt node will appear below the *Chat* node. Scroll down to it, give it the name *Prompt_variants* and click *Add*.
 ![alt text](images/toolbar.png)
 2. The following code block defines a system message, adds some hard-coded *context* information about Covid-19, and the user question. Paste it into the new node.
