@@ -32,10 +32,10 @@ This is a *RAG* process like the one pictured below where prompt flow is the *or
 ## Overview
 The Chat flow you have cloned is a template for creating a Q&A flow. At the top of the *Flow* pane you can see that the flow takes 2 inputs:
 1. `chat_history` - a json structure containing the questions and answers in the chat so far.
-2. `chat_input` - a user question.
+2. `question` - a user question.
 
 And it returns one output:
-1. `chat_output` - the response from the flow which is returned to the caller. Note that the value for this is set to be the output of the `chat` node.
+1. `answer` - the response from the flow which is returned to the caller. Note that the value for this is set to be the output of the `chat` node.
 
 *Nodes* are the building blocks of Prompt flow, they appear as panels below the *Inputs* and *Outputs* section. You can see that there is a default node called *chat* which is of type `LLM`. The purpose of an LLM node is to define a prompt, submit it to an LLM, and receive a response. Look at the *Inputs* section at the bottom of the node panel. You can see that it accepts the two parameters passed into the overall flow. The node declares a simple system message, loops through and appends the `chat_history`, and adds the input question `chat_input`. 
 
